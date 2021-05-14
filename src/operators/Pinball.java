@@ -18,14 +18,14 @@ public class Pinball {
 	private int tickets;
 	private int coinsPerPlay;
 
-	/** Premio maximo que se puede ganar en el pinball */
+	/** Premio maximo que se puede ganar en el pinball. */
 	private int maxTicketsPerPlay;
 
 	private boolean playerCreated;
 	private List<String> toysOwned = new ArrayList<>();
 
 	/**
-	 * Constructor de la clase Pinball
+	 * Constructor de la clase Pinball.
 	 * 
 	 * @param coinsPerPlay
 	 * @param maxTicketsPerPlay
@@ -57,7 +57,7 @@ public class Pinball {
 
 	/**
 	 * Se generan puntos aleatorios y en base a esos puntos se añaden x cantidad de
-	 * tickets. Este metodo tiene que ser llamadado por launchBall()
+	 * tickets. Este metodo tiene que ser llamadado por launchBall().
 	 */
 	private void randomPoints() {
 		int points = (int) (Math.random() * (999 + 1));
@@ -83,7 +83,7 @@ public class Pinball {
 	}
 
 	/**
-	 * Si el jugador tiene suficientes monedas se ejecuta lunchBall() 5 veces
+	 * Si el jugador tiene suficientes monedas se ejecuta lunchBall() 5 veces.
 	 * 
 	 */
 	public void launchBallFiveTimes() {
@@ -101,7 +101,7 @@ public class Pinball {
 	}
 
 	/**
-	 * Si el jugador tiene suficientes monedas se ejecuta lunchBall() 10 veces
+	 * Si el jugador tiene suficientes monedas se ejecuta lunchBall() 10 veces.
 	 * 
 	 */
 	public void launchBallTenTimes() {
@@ -138,6 +138,7 @@ public class Pinball {
 	}
 
 	/**
+	 * Se intercambian las monedas del jugador por euros si se cumple la condicion principal.
 	 * 
 	 * @param coins
 	 */
@@ -155,6 +156,7 @@ public class Pinball {
 	}
 
 	/**
+	 * Se intercambia el dinero del jugador por monedas si se cumple la condicion principal.
 	 * 
 	 * @param euros
 	 */
@@ -172,7 +174,7 @@ public class Pinball {
 
 	/**
 	 * Se intercambian los tickets por premios mediante un menu que interactua con
-	 * el usuario
+	 * el usuario.
 	 * 
 	 */
 	public void exchangeTickets() {

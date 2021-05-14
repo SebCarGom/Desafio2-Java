@@ -30,7 +30,7 @@ public class FPDual {
 		Pinball pinball1 = new Pinball(2, 700);
 		pinball1.createPlayer("Antonio", 100, 50, 0);
 
-		// Creacion variables StringBuilder
+		// Creacion variables StringBuilder.
 		StringBuilder strCoins = new StringBuilder();
 		StringBuilder strMoney = new StringBuilder();
 		StringBuilder strTickets = new StringBuilder();
@@ -38,14 +38,32 @@ public class FPDual {
 		StringBuilder strCoinsPerPlay = new StringBuilder();
 		StringBuilder strMaxTicketsReward = new StringBuilder();
 
-		// Asignación a variables StringBuilder
-		strCoins.append(pinball1.getPlayerName()).append(" tiene ").append(pinball1.getCoins()).append(" monedas.");
-		strMoney.append(pinball1.getPlayerName()).append(" tiene ").append(pinball1.getEuros()).append(" euros.");
-		strTickets.append(pinball1.getPlayerName()).append(" tiene ").append(pinball1.getTickets()).append(" tickets.");
-		strToys.append("Lista de premios: ").append(pinball1.getToysOwned());
-		strCoinsPerPlay.append("Cada partida cuesta ").append(pinball1.getCoinsPerPlay()).append(" monedas.");
-		strMaxTicketsReward.append("El premio máximo del Pinball es de ").append(pinball1.getMaxTicketsPerPlay())
-				.append(" tickets.");
+		// Asignación a variables StringBuilder.
+		strCoins.append(pinball1.getPlayerName())
+		.append(" tiene ")
+		.append(pinball1.getCoins())
+		.append(" monedas.");
+		
+		strMoney.append(pinball1.getPlayerName())
+		.append(" tiene ").
+		append(pinball1.getEuros()).
+		append(" euros.");
+		
+		strTickets.append(pinball1.getPlayerName())
+		.append(" tiene ")
+		.append(pinball1.getTickets())
+		.append(" tickets.");
+		
+		strToys.append("Lista de premios: ")
+		.append(pinball1.getToysOwned());
+		
+		strCoinsPerPlay.append("Cada partida cuesta ")
+		.append(pinball1.getCoinsPerPlay())
+		.append(" monedas.");
+		
+		strMaxTicketsReward.append("El premio máximo del Pinball es de ")
+		.append(pinball1.getMaxTicketsPerPlay())
+		.append(" tickets.");
 
 		// Se muestran las propiedades del Pinball y del Jugador.
 		System.out.println(strCoinsPerPlay);
@@ -75,9 +93,20 @@ public class FPDual {
 		strMoney.setLength(0);
 		strTickets.setLength(0);
 
-		strCoins.append(pinball1.getPlayerName()).append(" tiene ").append(pinball1.getCoins()).append(" monedas.");
-		strMoney.append(pinball1.getPlayerName()).append(" tiene ").append(pinball1.getEuros()).append(" euros.");
-		strTickets.append(pinball1.getPlayerName()).append(" tiene ").append(pinball1.getTickets()).append(" tickets.");
+		strCoins.append(pinball1.getPlayerName())
+		.append(" tiene ")
+		.append(pinball1.getCoins())
+		.append(" monedas.");
+		
+		strMoney.append(pinball1.getPlayerName())
+		.append(" tiene ")
+		.append(pinball1.getEuros())
+		.append(" euros.");
+		
+		strTickets.append(pinball1.getPlayerName())
+		.append(" tiene ")
+		.append(pinball1.getTickets())
+		.append(" tickets.");
 
 		// Se muestran las propiedades del Jugador.
 		System.out.println(strTickets);
@@ -89,16 +118,20 @@ public class FPDual {
 
 		// Reasignación a variable strToys.
 		strToys.setLength(0);
-		strToys.append("Lista de premios: ").append(pinball1.getToysOwned());
+		
+		strToys.append("Lista de premios: ")
+		.append(pinball1.getToysOwned());
 
 		// Se imprimen los premios del jugador.
 		System.out.println(strToys);
 
-		// Se comprueba si pinball1 pertenece a la clase Pinball
+		// Se comprueba si pinball1 pertenece a la clase Pinball.
 		if (pinball1 instanceof Pinball) {
 			System.out.println("pinball1 pertence a la clase Pinball");
+			
 		} else {
 			System.out.println("pinball1 no pertence a la clase Pinball");
+
 		}
 	}
 
