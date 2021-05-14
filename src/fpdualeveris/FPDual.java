@@ -30,39 +30,76 @@ public class FPDual {
 		Pinball pinball1 = new Pinball(2, 700);
 		pinball1.createPlayer("Antonio", 100, 50, 0);
 
+		// Creacion variables StringBuilder
+		StringBuilder strCoins = new StringBuilder();
+		StringBuilder strMoney = new StringBuilder();
+		StringBuilder strTickets = new StringBuilder();
+		StringBuilder strToys = new StringBuilder();
+		StringBuilder strCoinsPerPlay = new StringBuilder();
+		StringBuilder strMaxTicketsReward = new StringBuilder();
+
+		// Asignación a variables StringBuilder
+		strCoins.append(pinball1.getPlayerName()).append(" tiene ").append(pinball1.getCoins()).append(" monedas.");
+		strMoney.append(pinball1.getPlayerName()).append(" tiene ").append(pinball1.getEuros()).append(" euros.");
+		strTickets.append(pinball1.getPlayerName()).append(" tiene ").append(pinball1.getTickets()).append(" tickets.");
+		strToys.append("Lista de premios: ").append(pinball1.getToysOwned());
+		strCoinsPerPlay.append("Cada partida cuesta ").append(pinball1.getCoinsPerPlay()).append(" monedas.");
+		strMaxTicketsReward.append("El premio máximo del Pinball es de ").append(pinball1.getMaxTicketsPerPlay())
+				.append(" tickets.");
+
 		// Se muestran las propiedades del Pinball y del Jugador.
-		System.out.println("Cada partida cuesta " + pinball1.getCoinsPerPlay() + " monedas.");
-		System.out.println("El premio máximo del Pinball es de " + pinball1.getMaxTicketsPerPlay() + " tickets.");
-		System.out.println(pinball1.getPlayerName() + " tiene " + pinball1.getCoins() + " monedas.");
-		System.out.println(pinball1.getPlayerName() + " tiene " + pinball1.getTickets() + " tickets.");
-		System.out.println(pinball1.getPlayerName() + " tiene " + pinball1.getEuros() + " euros.\n");
+		System.out.println(strCoinsPerPlay);
+		System.out.println(strMaxTicketsReward);
+		System.out.println(strCoins);
+		System.out.println(strTickets);
+		System.out.println(strMoney);
+		System.out.println(strToys);
 
-		// Se ejecuta el metodo LaunchBall 5 veces.
+		// Se ejecuta el metodo LaunchBall 20 veces.
 		pinball1.launchBall();
 		pinball1.launchBall();
 		pinball1.launchBall();
 		pinball1.launchBall();
 		pinball1.launchBall();
-
-		// Se muestran las monedas que tiene el Jugador.
-		System.out.println(pinball1.getPlayerName() + " tiene " + pinball1.getCoins() + " monedas.\n");
+		pinball1.launchBallFiveTimes();
+		pinball1.launchBallTenTimes();
 
 		// Se intercambian las monedas restantes del jugador por euros.
-		pinball1.exchangeCoins(40);
+		pinball1.exchangeCoins(10);
+
+		// Se intercambian 10 euros por monedas.
+		pinball1.exchangeEuros(4);
+
+		// Reasignación a variables StringBuilder.
+		strCoins.setLength(0);
+		strMoney.setLength(0);
+		strTickets.setLength(0);
+
+		strCoins.append(pinball1.getPlayerName()).append(" tiene ").append(pinball1.getCoins()).append(" monedas.");
+		strMoney.append(pinball1.getPlayerName()).append(" tiene ").append(pinball1.getEuros()).append(" euros.");
+		strTickets.append(pinball1.getPlayerName()).append(" tiene ").append(pinball1.getTickets()).append(" tickets.");
 
 		// Se muestran las propiedades del Jugador.
-		System.out.println(pinball1.getPlayerName() + " tiene " + pinball1.getTickets() + " tickets.");
-		System.out.println(pinball1.getPlayerName() + " tiene " + pinball1.getEuros() + " euros.");
-		System.out.println(pinball1.getPlayerName() + " tiene " + pinball1.getCoins() + " monedas.\n");
+		System.out.println(strTickets);
+		System.out.println(strMoney);
+		System.out.println(strCoins);
 
-		// Se imprimen los premios que tiene el jugador y se le da la opcion de
-		// comprarlos.
-		System.out.println("Lista de premios: " + pinball1.getToysOwned());
+		// Se le da al jugador la opcion de comprar premios.
 		pinball1.exchangeTickets();
-		System.out.println("Lista de premios: " + pinball1.getToysOwned() + "\n");
+
+		// Reasignación a variable strToys.
+		strToys.setLength(0);
+		strToys.append("Lista de premios: ").append(pinball1.getToysOwned());
+
+		// Se imprimen los premios del jugador.
+		System.out.println(strToys);
 
 		// Se comprueba si pinball1 pertenece a la clase Pinball
-		System.out.println(pinball1 instanceof Pinball);
+		if (pinball1 instanceof Pinball) {
+			System.out.println("pinball1 pertence a la clase Pinball");
+		} else {
+			System.out.println("pinball1 no pertence a la clase Pinball");
+		}
 	}
 
 }

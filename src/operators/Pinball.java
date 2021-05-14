@@ -18,15 +18,16 @@ public class Pinball {
 	private int tickets;
 	private int coinsPerPlay;
 
-	/* Premio maximo que se puede ganar en el pinball */
+	/** Premio maximo que se puede ganar en el pinball */
 	private int maxTicketsPerPlay;
+
 	private boolean playerCreated;
 	private List<String> toysOwned = new ArrayList<>();
 
 	/**
 	 * Constructor de la clase Pinball
 	 * 
-	 * @param coinssPerPlay
+	 * @param coinsPerPlay
 	 * @param maxTicketsPerPlay
 	 */
 	public Pinball(int coinsPerPlay, int maxTicketsPerPlay) {
@@ -49,29 +50,74 @@ public class Pinball {
 			System.out.println("No tienes suficientes monedas para poder jugar.\n");
 
 		} else {
+			randomPoints();
 
-			int points = (int) (Math.random() * (999 + 1));
-			coins -= coinsPerPlay;
-			if (points == 999) {
-				System.out.println("Enhorabuena! Has conseguido la máxima puntuación.\n Puntuación: " + points + "p\n");
-				tickets += maxTicketsPerPlay;
+		}
+	}
 
-			} else if (points >= 600) {
-				System.out.println("Enhorabuena! Has conseguido una buena puntuación.\n Puntuación: " + points + "p\n");
-				tickets += maxTicketsPerPlay / 2;
+	/**
+	 * Se generan puntos aleatorios y en base a esos puntos se añaden x cantidad de
+	 * tickets. Este metodo tiene que ser llamadado por launchBall()
+	 */
+	private void randomPoints() {
+		int points = (int) (Math.random() * (999 + 1));
+		coins -= coinsPerPlay;
+		if (points == 999) {
+			System.out.println("Enhorabuena! Has conseguido la máxima puntuación.\n Puntuación: " + points + "p\n");
+			tickets += maxTicketsPerPlay;
 
-			} else if (points >= 300) {
-				System.out.println(
-						"Tu puntuación no ha sido mala pero puede mejorarse, ¿quieres intentarlo de nuevo?\n Puntuación: "
-								+ points + "p\n");
-				tickets += maxTicketsPerPlay / 3;
+		} else if (points >= 600) {
+			System.out.println("Enhorabuena! Has conseguido una buena puntuación.\n Puntuación: " + points + "p\n");
+			tickets += maxTicketsPerPlay / 2;
 
-			} else {
-				System.out
-						.println("Tu puntuación no ha sido de las mejores, ¿quieres intentarlo de nuevo?\n Puntuación: "
-								+ points + "p\n");
+		} else if (points >= 300) {
+			System.out.println(
+					"Tu puntuación no ha sido mala pero puede mejorarse, ¿quieres intentarlo de nuevo?\n Puntuación: "
+							+ points + "p\n");
+			tickets += maxTicketsPerPlay / 3;
+
+		} else {
+			System.out.println("Tu puntuación no ha sido de las mejores, ¿quieres intentarlo de nuevo?\n Puntuación: "
+					+ points + "p\n");
+		}
+	}
+
+	/**
+	 * Si el jugador tiene suficientes monedas se ejecuta lunchBall() 5 veces
+	 * 
+	 */
+	public void launchBallFiveTimes() {
+		boolean enoughCoins = (coins >= coinsPerPlay * 5) ? true : false;
+		for (int i = 0; i < 5; i++) {
+			if (enoughCoins) {
+				launchBall();
+
 			}
 		}
+		if (!enoughCoins) {
+			System.out.println("No tienes suficientes monedas para poder jugar.\n");
+
+		}
+	}
+
+	/**
+	 * Si el jugador tiene suficientes monedas se ejecuta lunchBall() 10 veces
+	 * 
+	 */
+	public void launchBallTenTimes() {
+		boolean enoughCoins = (coins >= coinsPerPlay * 10) ? true : false;
+		int i = 0;
+		do {
+			if (enoughCoins) {
+				launchBall();
+				i++;
+
+			} else {
+				System.out.println("No tienes suficientes monedas para poder jugar.\n");
+				i = 11;
+
+			}
+		} while (i < 10);
 	}
 
 	/**
@@ -131,12 +177,20 @@ public class Pinball {
 	 */
 	public void exchangeTickets() {
 		if (playerCreated && tickets > 0) {
+
+			// Se encapsula Scanner para evitar la vulnerabilidad al mostrar las trazas de error.
 			try (Scanner sc = new Scanner(System.in)) {
 				System.out.println("--- PREMIOS ----");
+
+				// Se muestra el Menu mediante el metodo showMenu()
 				showMenu();
 				int i = 1;
+
+				// Se inicializa el menu y cuando el usuario seleccione la OPCION 0 se cierra el menu.
 				while (i != 0) {
 					System.out.println("\nPor favor elija una OPCION:");
+
+					// Se muestra el Menu mediante el metodo showMenu()
 					showMenu();
 					i = sc.nextInt();
 					chooseToy(i);
@@ -183,6 +237,7 @@ public class Pinball {
 			if (tickets >= 700) {
 				toysOwned.add("Oso de Peluche");
 				tickets -= 700;
+				System.out.println("Le quedan ".concat(Integer.toString(tickets)).concat(" tickets"));
 
 			} else {
 				System.out.println("No tienes suficientes tickets.");
@@ -194,6 +249,7 @@ public class Pinball {
 			if (tickets >= 300) {
 				toysOwned.add("Yoyo");
 				tickets -= 300;
+				System.out.println("Le quedan ".concat(Integer.toString(tickets)).concat(" tickets"));
 
 			} else {
 				System.out.println("No tienes suficientes tickets.");
@@ -205,6 +261,7 @@ public class Pinball {
 			if (tickets >= 500) {
 				toysOwned.add("Gorra");
 				tickets -= 500;
+				System.out.println("Le quedan ".concat(Integer.toString(tickets)).concat(" tickets"));
 
 			} else {
 				System.out.println("No tienes suficientes tickets.");
